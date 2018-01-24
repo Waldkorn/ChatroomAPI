@@ -23,7 +23,7 @@
 			$getMessage = $messages[$_GET['lastid']];
 			response($getMessage[0], $getMessage[1], $getMessage[2]);
 
-		} elseif (isset($_GET['list']) and isset($_GET['mykey'])) {
+		} elseif (!isset($_GET['lastid']) and isset($_GET['mykey'])) {
 
 			$idlist = "";
 
