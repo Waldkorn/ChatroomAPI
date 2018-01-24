@@ -1,0 +1,126 @@
+#login-screen {
+	background-color: rgb(245,245,245);
+	background-color: darkgray;
+
+	padding: 10px;
+
+	border-radius: 20px;
+
+	overflow: hidden;
+
+	font-family: tahoma, arial;
+
+	display: inline-block;
+
+}
+
+#login-screen form {
+	margin: 5px;
+}
+
+#login-submit {
+	text-align: center;
+
+	background-color: #008CBA;
+
+	padding: 10px;
+
+	border-radius: 10px;
+
+	cursor:pointer;
+
+	-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+#chatroom {
+	background-color: rgb(245,245,245);
+	background-color: darkgray;
+
+	margin: auto;
+	padding: 10px;
+
+	width: 90%;
+
+	border-radius: 20px;
+
+	overflow: hidden;
+
+	font-family: tahoma, arial;
+}
+
+#message-screen {
+	min-height: 70vh;
+	max-height: 70vh;
+	width: auto;
+
+	margin: 20px;
+
+	background-color: white;
+
+	overflow-y: scroll;
+
+	word-wrap: break-word;
+}
+
+#chat-text {
+	min-height: 10vh;
+	width: 80%;
+
+	background-color: white;
+
+	padding: 0px;
+	margin: 20px;
+
+	float: left;
+}
+
+#chat-text input {
+	border-style: hidden;
+
+	width: 100%;
+	min-height: 100%;
+
+	overflow-y: scroll;
+	word-wrap: break-word;
+}
+
+input#chat-text-area:focus {
+	outline-width: 0;
+}
+
+#submit-button {
+	min-height: 10vh;
+	width: 10%;
+
+	background-color: #008CBA;
+
+	padding: 0px;
+	margin: 20px;
+
+	float: left;
+
+	display: block;
+
+	text-align: center;
+	font-size: 150%;
+
+	border-radius: 20px;
+
+	cursor:pointer;
+
+	-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+#submit-button p {
+	vertical-align: middle;
+}

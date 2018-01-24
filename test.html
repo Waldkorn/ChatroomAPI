@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+</head>
+<body>
+
+<div id="chatroom">
+
+	<div id="message-screen">
+
+	</div>
+
+	<div id="users">
+
+	</div>
+
+	<div id="chat-text">
+
+		<form onsubmit="sendMessage(); return false;" autocomplete="off">
+			<input type="text" placeholder="type here..." id="chat-text-area" />
+		</form>
+
+	</div>
+
+	<div id="submit-button" onclick="sendMessage()">
+
+		<p>submit</p>
+
+	</div>
+
+</div>
+
+<script>
+	var request = new XMLHttpRequest();
+	var message = "";
+	var username = "Ewout";
+	var key = "ewout";
+
+	request.open("GET" , "/api.php?mykey=ewout&value=123&lastid=20", false);
+	request.send();
+	console.log(request);
+	messages = JSON.parse(request.response).message;
+
+	
+		document.getElementById("message-screen").innerHTML += messages + "<br>";
+		console.log(messages);
+	
+	
+	function sendMessage() {
+
+		//finds the the message that has to be displayed
+		var messageString = "<b>" + username + ": </b>" + document.getElementById("chat-text-area").value;
+
+		//only submit a message if the message isn't nothing
+		if (messageString != "") {
+		// sends message to server
+			postMessage(messageString);
+		}
+	}
+
+
+	function postMessage(message) {
+			request.open("PUT", "/api.php?mykey=" + key + "&value=" + message, false);
+			request.send();
+		}
+	//message = request.reponse;
+
+	console.log(message);
+
+	//document.getElementById("message-screen").innerHTML = message;
+</script>
+
+</body>
+</html>
