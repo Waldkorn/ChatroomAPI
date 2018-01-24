@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<Title>Waldichat</Title>
+
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+
+<!-- icoon -->
+<link rel="icon" href="images/pepe.png" />
+
+</head>
+
+<body>
+
+<div id="login-screen">
+
+	<form onsubmit="login(); return false;">
+		Username: <br>
+		<input type="text" placeholder="username" id="username-input" /><br>
+		Chatroom key: <br>
+		<input type="text" placeholder="chatroom" id="chatroom-input" value="ewout"/>
+	</form>
+
+
+	<div id="login-submit" onclick="login()">
+
+		submit
+
+	</div>
+
+</p>
+
+</div>
+
+<div id="chatroom" style="display: none;">
+
+	<div id="message-screen">
+
+	</div>
+
+	<div id="users">
+
+	</div>
+
+	<div id="chat-text">
+
+		<form onsubmit="sendMessage(); return false;" autocomplete="off">
+			<input type="text" placeholder="type here..." id="chat-text-area" />
+		</form>
+
+	</div>
+
+	<div id="submit-button" onclick="sendMessage()">
+
+		<p>submit</p>
+
+	</div>
+
+</div>
+
+<!-- javascript -->
+<script src="javascript/javascript.js"></script>
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</body>
+</html>
