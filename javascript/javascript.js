@@ -1,7 +1,7 @@
 var username = "";
 var key = "ewout"
 var request = new XMLHttpRequest();
-var highestId = 0;
+var highestId = -500;
 
 var messageScreen = document.getElementById("message-screen");
 
@@ -65,8 +65,11 @@ function getAllMessageIds() {
 	correctids = request.response;
 
 	//correctids word van stringformaat overgezet naar array formaat met integers
+	//console.log(correctids);
 	correctids = correctids.split(",");
+	console.log(correctids);
 	for (i = 0 ; i < correctids.length; i++) {
+
 		correctids[i] = parseInt(correctids[i]);
 	}
 }
@@ -77,7 +80,7 @@ function scrollToBottom(id){
 }
 
 function grabMessageById(id) {
-	request.open("GET", "/chatroomapi/api.php?action=read&format=json&mykey=" + key + "&lastid=" + id, false);
+	request.open("GET", "/chatroomapi/api.php?mykey=" + key + "&lastid=" + id, false);
 	request.send();
 	return request.response;
 }

@@ -32,13 +32,12 @@
 				if ($messages[$ite][1] == $_GET['mykey']) {
 
 					$idlist = $idlist . $messages[$ite][0] . ",";
-					var_dump($messages[$ite][0]);
 
 				}
 
 			}
 			$idlist = substr($idlist, 0, -1);
-			var_dump($idlist);
+			echo($idlist);
 
 		} else {
 
