@@ -5,8 +5,14 @@
 
 	$verb = $_SERVER['REQUEST_METHOD'];
 	$my_file = 'file.txt';
-	$messages = json_decode(openFile($my_file));
-	$i = count($messages);
+	if (json_decode(openFile($my_file)) != null) {
+		$messages = json_decode(openFile($my_file));
+		$i = count($messages);
+	} else {
+		$messages = [];
+		$i = 0;
+	}
+	
 
 	//var_dump($messages);
 
@@ -45,6 +51,7 @@
 		if (isset($_GET['mykey']) and isset($_GET['value'])) {
 
 			$newMessage = array($i, $_GET['mykey'], $_GET['value']);
+			
 			array_push($messages, $newMessage);
 			writeFile($my_file, $messages);
 			http_response_code(200);
