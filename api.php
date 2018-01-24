@@ -8,14 +8,31 @@
 	$messages = json_decode(openFile($my_file));
 	$i = count($messages);
 
-	//var_dump($_GET['lastid']);
+	//var_dump($messages);
 
 	if ($verb == "GET") {
 
 		if (isset($_GET['lastid']) and isset($_GET['mykey'])) {
-			global $messages;
+
 			$getMessage = $messages[$_GET['lastid']];
 			response($getMessage[0], $getMessage[1], $getMessage[2]);
+
+		} elseif (isset($_GET['list']) and isset($_GET['mykey'])) {
+
+			$idlist = "";
+
+			for ($ite = 0 ; $ite < count($messages) ; $ite++) {
+
+				if ($messages[$ite][1] == $_GET['mykey']) {
+
+					$idlist = $idlist . $messages[$ite][0] . ",";
+					var_dump($messages[$ite][0]);
+
+				}
+
+			}
+			$idlist = substr($idlist, 0, -1);
+			var_dump($idlist);
 
 		} else {
 
