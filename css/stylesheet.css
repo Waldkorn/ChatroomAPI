@@ -11,7 +11,32 @@
 	font-family: tahoma, arial;
 
 	display: inline-block;
+}
 
+.myMessage {
+	background-color: lightgrey;
+	float: right;
+	border-radius: 10px;
+	position: relative;
+	padding: 3px 10px;
+	margin: 3px;
+	clear: both;
+}
+
+.yourMessage {
+	background-color: lightblue;
+	float: left;
+	border-radius: 10px;
+	position: relative;
+	padding: 3px 10px;
+	margin: 3px;
+	clear: both;
+}
+
+body {
+	background-image: url("images/cookies.jpg");
+	background-repeat: repeat;
+	background-size: 100%;
 }
 
 #login-screen form {

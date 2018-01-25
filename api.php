@@ -12,9 +12,6 @@
 		$messages = [];
 		$i = 0;
 	}
-	
-
-	//var_dump($messages);
 
 	if ($verb == "GET") {
 
@@ -23,7 +20,7 @@
 			$getMessage = $messages[$_GET['lastid']];
 			response($getMessage[0], $getMessage[1], $getMessage[2]);
 
-		} elseif (!isset($_GET['lastid']) and isset($_GET['mykey'])) {
+		} elseif (isset($_GET['mykey'])) {
 
 			$idlist = "";
 
@@ -36,6 +33,7 @@
 				}
 
 			}
+			
 			$idlist = substr($idlist, 0, -1);
 			echo($idlist);
 
@@ -91,31 +89,4 @@
 		echo $json_response;
 	}
 
-/*
-	if($verb == "GET") {
-		if(isset($_GET['action']) and isset($_GET['mykey'])) {
-			$name = $_GET['mykey'];
-			response($name);
-		} else {
-			echo "error: please enter required parameters";
-		}
-	} elseif ($verb == "PUT") {
-		$handle = fopen($my_file, 'w');
-		$data = 'This is the data as well';
-		fwrite($handle, $data);
-		$handle = fopen($my_file, 'r');
-		response(fread($handle,filesize($my_file)));
-	} else {
-		echo "error: verb unknown";
-	}
-
-	function response($name) {
-		header("HTTP/1.1 ");
-		
-		$Response = $name;
-		
-		$json_response = $Response;
-		echo $json_response;
-	}
-*/
 ?>
