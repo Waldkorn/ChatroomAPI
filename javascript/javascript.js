@@ -60,7 +60,7 @@ function refreshChat() {
 
 function getAllMessageIds() {
 	//vraagt de ids aan die bij de chatroom horen
-	request.open("GET" , "/chatroomapi/api.php?mykey=" + key, false);
+	request.open("GET" , "api.php?mykey=" + key, false);
 	request.send();
 	correctids = request.response;
 
@@ -80,13 +80,13 @@ function scrollToBottom(id){
 }
 
 function grabMessageById(id) {
-	request.open("GET", "/chatroomapi/api.php?mykey=" + key + "&lastid=" + id, false);
+	request.open("GET", "api.php?mykey=" + key + "&lastid=" + id, false);
 	request.send();
 	return request.response;
 }
 
 function postMessage(message) {
-	request.open("PUT", "/chatroomapi/api.php?&mykey=" + key + "&value=" + message, false);
+	request.open("PUT", "api.php?&mykey=" + key + "&value=" + message, false);
 	request.send();
 }
 
