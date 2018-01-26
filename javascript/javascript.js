@@ -21,10 +21,9 @@ function login() {
 				highestId = messages[i][0];
 				var newMessage = messages[i][2];
 				messageScreen.innerHTML += newMessage + "<br>";
+				scrollToBottom("message-screen");
 
-				console.log(highestId);
 			}
-			console.log(messages);
 		}, 1000);
 
 	} else {
