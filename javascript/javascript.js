@@ -15,8 +15,16 @@ function login() {
 		showChatroom();
 
 		window.setInterval(function(){
-			getAllMessageIds();
-			refreshChat();
+			//getAllMessageIds();
+			messages = JSON.parse(grabMessageById(highestId));
+			for (i = 0 ; i < messages.length ; i++) {
+				highestId = messages[i][0];
+				var newMessage = messages[i][2];
+				messageScreen.innerHTML += newMessage + "<br>";
+
+				console.log(highestId);
+			}
+			console.log(messages);
 		}, 1000);
 
 	} else {
@@ -42,49 +50,19 @@ function sendMessage() {
 	scrollToBottom("message-screen");
 }
 
-function refreshChat() {
-	for (i = 0; i < correctids.length; i++) {
-		if (correctids[i] >= highestId) {
-
-			var messageId = correctids[i];
-			var newMessage = JSON.parse(grabMessageById(messageId));
-
-			messageScreen.innerHTML += newMessage[2] + "<br>";
-
-			scrollToBottom("message-screen");
-			highestId = messageId + 1;
-		}
-	}
-}
-
-function getAllMessageIds() {
-	//vraagt de ids aan die bij de chatroom horen
-	request.open("GET" , "/chatroomapi/api.php?key=" + key, false);
-	request.send();
-	correctids = request.response;
-
-	//correctids word van stringformaat overgezet naar array formaat met integers
-	correctids = correctids.split(",");
-	for (i = 0 ; i < correctids.length; i++) {
-
-		correctids[i] = parseInt(correctids[i]);
-	}
-}
-
 function scrollToBottom(id){
    var div = document.getElementById(id);
    div.scrollTop = div.scrollHeight - div.clientHeight;
 }
 
 function grabMessageById(id) {
-	request.open("GET", "/chatroomapi/api.php?key=" + key + "&id=" + id, false);
+	request.open("GET", "api.php?key=" + key + "&minimumid=" + id, false);
 	request.send();
-	console.log(request.response);
 	return request.response;
 }
 
 function postMessage(message) {
-	request.open("PUT", "/chatroomapi/api.php?&key=" + key + "&message=" + message, false);
+	request.open("PUT", "api.php?&key=" + key + "&message=" + message, false);
 	request.send();
 }
 

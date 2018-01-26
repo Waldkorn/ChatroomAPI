@@ -9,23 +9,12 @@
 	if ($verb == "GET") {
 
 		
-		if (isset($_GET['id']) and isset($_GET['key'])) {
+		if (isset($_GET['minimumid']) and isset($_GET['key'])) {
 
-			http_response_code(201);
-			$getMessage = askMessageFromDatabase($_GET['key'], $_GET['id']);
-			$jsonMessage = json_encode($getMessage);
-			echo $jsonMessage;
-
-
-		} elseif (!isset($_GET['id']) and isset($_GET['key'])) {
-
-			$idlist = "";
-			http_response_code(200);
-
-			$idlist = askIdsFromDatabase($_GET['key']);
-			
-			$idlist = substr($idlist, 0, -1);
-			echo($idlist);
+			$messages = array();
+			$messageIds = askIdsFromDatabase($_GET['key'], $_GET['minimumid']);
+			$messageIds = json_encode($messageIds);
+			echo $messageIds;
 
 		} else {
 
@@ -98,7 +87,7 @@ function writeMessageToDatabase($mykey, $message) {
 	$connection = null; // Close connection
 }
 
-function askIdsFromDatabase($mykey) {
+function askIdsFromDatabase($mykey, $minimumid) {
 
 	$dsn = 'mysql:dbname=chatdb;host=127.0.0.1';
 	$user_name = 'root';
@@ -111,15 +100,16 @@ function askIdsFromDatabase($mykey) {
 
 	$result = $connection->query($sql);
 
-	$answer = "";
+	$response = [];
 
 	foreach ($result as $row) {
-		$answer = $answer . $row['id'] . ",";
+		$placeholder = array($row['id'], $row['mykey'], $row['message']);
+		if ($placeholder[0] > $minimumid) {
+			$response[] = $placeholder;
+		}
 	}
 
-	return $answer;
-
-	$connection = null;
+	return $response;
 }
 
 function askMessageFromDatabase($mykey, $id) {
