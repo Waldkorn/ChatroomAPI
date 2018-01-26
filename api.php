@@ -12,30 +12,32 @@
 		$messages = [];
 		$i = 0;
 	}
-	
-
-	//var_dump($messages);
 
 	if ($verb == "GET") {
 
-		if (isset($_GET['lastid']) and isset($_GET['mykey'])) {
+		
+		if (isset($_GET['id']) and isset($_GET['key'])) {
 
-			$getMessage = $messages[$_GET['lastid']];
+			http_response_code(201);
+			$getMessage = $messages[$_GET['id']];
 			response($getMessage[0], $getMessage[1], $getMessage[2]);
 
-		} elseif (!isset($_GET['lastid']) and isset($_GET['mykey'])) {
+
+		} elseif (!isset($_GET['id']) and isset($_GET['key'])) {
 
 			$idlist = "";
+			http_response_code(200);
 
 			for ($ite = 0 ; $ite < count($messages) ; $ite++) {
 
-				if ($messages[$ite][1] == $_GET['mykey']) {
+				if ($messages[$ite][1] == $_GET['key']) {
 
 					$idlist = $idlist . $messages[$ite][0] . ",";
 
 				}
 
 			}
+			
 			$idlist = substr($idlist, 0, -1);
 			echo($idlist);
 
@@ -43,13 +45,28 @@
 
 			http_response_code(400);
 
-		}
+		} 
+/*
+		if (isset($_GET['minimumid'] and isset($_GET['mykey']))) {
 
+			http_response_code(200);
+			$lastid = $_GET['lastid'];
+
+			$sendMessages = array_slice($messages, $lastid);
+
+			return $sendMessages;
+
+		} else {
+
+			http_response_code(400);
+
+		}
+*/
 	} elseif ($verb == "PUT") {
 
-		if (isset($_GET['mykey']) and isset($_GET['value'])) {
+		if (isset($_GET['key']) and isset($_GET['message'])) {
 
-			$newMessage = array($i, $_GET['mykey'], $_GET['value']);
+			$newMessage = array($i, $_GET['key'], $_GET['message']);
 			
 			array_push($messages, $newMessage);
 			writeFile($my_file, $messages);
@@ -91,31 +108,4 @@
 		echo $json_response;
 	}
 
-/*
-	if($verb == "GET") {
-		if(isset($_GET['action']) and isset($_GET['mykey'])) {
-			$name = $_GET['mykey'];
-			response($name);
-		} else {
-			echo "error: please enter required parameters";
-		}
-	} elseif ($verb == "PUT") {
-		$handle = fopen($my_file, 'w');
-		$data = 'This is the data as well';
-		fwrite($handle, $data);
-		$handle = fopen($my_file, 'r');
-		response(fread($handle,filesize($my_file)));
-	} else {
-		echo "error: verb unknown";
-	}
-
-	function response($name) {
-		header("HTTP/1.1 ");
-		
-		$Response = $name;
-		
-		$json_response = $Response;
-		echo $json_response;
-	}
-*/
 ?>
