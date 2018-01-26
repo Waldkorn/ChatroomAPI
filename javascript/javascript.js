@@ -16,7 +16,6 @@ function login() {
 
 		window.setInterval(function(){
 			getAllMessageIds();
-			//console.log(correctids);
 			refreshChat();
 		}, 1000);
 
@@ -46,12 +45,11 @@ function sendMessage() {
 function refreshChat() {
 	for (i = 0; i < correctids.length; i++) {
 		if (correctids[i] >= highestId) {
-			var messageId = correctids[i];
-			//console.log(grabMessageById(messageId));
-			var newMessage = JSON.parse(grabMessageById(messageId));
-			//console.log(JSON.parse(grabMessageById(messageId)));
 
-			messageScreen.innerHTML += newMessage[0][2] + "<br>";
+			var messageId = correctids[i];
+			var newMessage = JSON.parse(grabMessageById(messageId));
+
+			messageScreen.innerHTML += newMessage[2] + "<br>";
 
 			scrollToBottom("message-screen");
 			highestId = messageId + 1;
@@ -65,17 +63,12 @@ function getAllMessageIds() {
 	request.send();
 	correctids = request.response;
 
-	//console.log(correctids);
-
 	//correctids word van stringformaat overgezet naar array formaat met integers
-	//console.log(correctids);
 	correctids = correctids.split(",");
-	//console.log(correctids);
 	for (i = 0 ; i < correctids.length; i++) {
 
 		correctids[i] = parseInt(correctids[i]);
 	}
-	//console.log(correctids);
 }
 
 function scrollToBottom(id){
