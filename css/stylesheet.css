@@ -1,102 +1,31 @@
-/*
-colors:
-blue: #0093ec
-white
-black
-*/
-
-body {
-	font-family: tahoma, arial;
-	margin: 0px;
-	padding: 0px;
-}
-
-#blogger-picture {
-	width: 150px;
-	float: right;
-	margin: 0px 5px;
-}
-
-#user-interface {
-	width: 1200px;
-	padding: 3px;
-}
-
-#blogger-interface {
-	width: 1200px;
-	padding: 0px;
-}
-
 #login-screen {
-	display: block;
-}
-
-#add-category {
-	height: 600px;
-
-	width: 1198px;
-	border-style: solid;
-	border-width: 1px;
-	border-color: #0093ec;
-}
-
-#home-content {
-	width: 1178px;
-	border-style: solid;
-	border-width: 1px;
-	border-color: #0093ec;
+	background-color: rgb(245,245,245);
+	background-color: darkgray;
 
 	padding: 10px;
-}
 
-#about-content {
-	width: 1178px;
-	border-style: solid;
-	border-width: 1px;
-	border-color: #0093ec;
+	border-radius: 20px;
 
-	padding: 10px;
-}
+	overflow: hidden;
 
-#login-interface {
-	width: 1197px;
-	height: 600px;
+	font-family: tahoma, arial;
 
-	margin: 0;
-
-	border-collapse: collapse;
-	border-style: solid;
-	border-width: 1px;
-	border-color: #0093ec;
-}
-
-#blog-content, #about-content, #home-content, #user-interface, #blogger-interface, #create-article, #login-interface, #add-category {
-	display: none;
-}
-
-.navbar {
-	width: 1198;
-	min-height: 50px;
-
-	border-style: solid;
-	border-width: 1px;
-	border-color: #0093ec;
-	border-radius: 4px 4px 0px 0px;
-}
-
-.nav-element {
 	display: inline-block;
 
-	padding: 0px 50px;
-	margin: 0px;
+}
 
-	border-width: 0px;
+#login-screen form {
+	margin: 5px;
+}
 
-	font-size: large;
+#login-submit {
+	text-align: center;
 
-	border-radius: 3px;
+	background-color: #008CBA;
 
-	border-collapse: collapse;
+	padding: 10px;
+
+	border-radius: 10px;
 
 	cursor:pointer;
 
@@ -108,32 +37,82 @@ body {
     user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 
-.nav-element:hover {
-	background-color: #0093ec;
+#chatroom {
+	background-color: rgb(245,245,245);
+	background-color: darkgray;
+
+	margin: auto;
+	padding: 10px;
+
+	width: 90%;
+
+	border-radius: 20px;
+
+	overflow: hidden;
+
+	font-family: tahoma, arial;
 }
 
-.last-element {
-	float: right;
+#message-screen {
+	min-height: 70vh;
+	max-height: 70vh;
+	width: auto;
+
+	margin: 20px;
+
+	background-color: white;
+
+	overflow-y: scroll;
+
+	word-wrap: break-word;
 }
 
-#categories {
-	width: 196px;
-	height: 600px;
+#chat-text {
+	min-height: 10vh;
+	width: 80%;
 
-	border-style: solid;
-	border-width: 1px;
-	border-color: #0093ec;
-	border-collapse: collapse;
+	background-color: white;
+
+	padding: 0px;
+	margin: 20px;
 
 	float: left;
 }
 
-.category-element p {
-	padding: 2px 2px;
+#chat-text input {
+	border-style: hidden;
 
+	width: 100%;
+	min-height: 100%;
+
+	overflow-y: scroll;
+	word-wrap: break-word;
+}
+
+input#chat-text-area:focus {
+	outline-width: 0;
+}
+
+#submit-button {
+	min-height: 10vh;
+	width: 10%;
+
+	background-color: #008CBA;
+
+	padding: 0px;
+	margin: 20px;
+
+	float: left;
+
+	display: block;
+
+	text-align: center;
+	font-size: 150%;
+
+	border-radius: 20px;
 
 	cursor:pointer;
-	
+
 	-webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
     -khtml-user-select: none; /* Konqueror HTML */
@@ -142,51 +121,6 @@ body {
     user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 
-.category-element {
-	border-radius: 2px;
-}
-
-.category-element:hover {
-	background-color: #0093ec;
-}
-
-#content {
-	width: 1000px;
-	height: 600px;
-
-	border-style: solid;
-	border-width: 1px;
-	border-color: #0093ec;
-
-	float: right;
-	
-	overflow-y: scroll;
-	overflow-x: hidden;
-}
-
-#create-article {
-	width: 1197px;
-	height: 600px;
-
-	margin: 0;
-
-	border-collapse: collapse;
-	border-style: solid;
-	border-width: 1px;
-	border-color: #0093ec;
-}
-
-.blogpost {
-	border-style: solid;
-	border-width: 1px;
-	border-color: #0093EC;
-	margin: 2px;
-	border-radius: 2px;
-}
-
-.blogpostcategory {
-	text-align: right;
-	border-bottom-style: solid;
-	border-bottom-width: 1px;
-	border-color: #0093EC;
+#submit-button p {
+	vertical-align: middle;
 }
